@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "main": "web.js",
   "repository": "https://github.com/taktran/gottto",
+  "deploymentRemote": "git@heroku.com:gottto.git",
   "author": "Tak Tran (contact@tutaktran.com)",
   "license": "MIT",
   "dependencies": {
