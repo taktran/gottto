@@ -46,6 +46,12 @@ module.exports = function (grunt) {
           logConcurrentOutput: true
         }
       }
+    },
+
+    exec: {
+      deploy: {
+        cmd: "git push heroku master"
+      }
     }
   });
 
@@ -53,6 +59,8 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-concurrent');
   grunt.loadNpmTasks('grunt-nodemon');
+  grunt.loadNpmTasks('grunt-exec');
 
   grunt.registerTask('default', ['concurrent:server']);
+  grunt.registerTask('deploy', ['exec:deploy']);
 };

@@ -22,4 +22,4 @@ Firstly, add the remote heroku branch
 
 Push to
 
-    git push heroku master
+    grunt deploy
