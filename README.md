@@ -8,17 +8,9 @@ Install dependencies
 
     npm install
 
-Install [nodemon](https://github.com/remy/nodemon)
-
-    npm install -g nodemon
-
 To run the server
 
-    nodemon web.js
-
-Or with node
-
-    foreman start
+    grunt
 
 ## Deployment
 

@@ -24,11 +24,35 @@ module.exports = function (grunt) {
         files: ['<%= jshint.js.src %>'],
         tasks: ['jshint']
       }
+    },
+
+    nodemon: {
+      dev: {
+        options: {
+          file: 'web.js',
+          ignoredFiles: ['README.md', 'node_modules/**'],
+          watchedExtensions: ['js'],
+          watchedFolders: ['test', 'tasks'],
+          debug: true,
+          delayTime: 1
+        }
+      }
+    },
+
+    concurrent: {
+      server: {
+        tasks: ['nodemon', 'watch'],
+        options: {
+          logConcurrentOutput: true
+        }
+      }
     }
   });
 
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-concurrent');
+  grunt.loadNpmTasks('grunt-nodemon');
 
-  grunt.registerTask('default', ['watch']);
+  grunt.registerTask('default', ['concurrent:server']);
 };
