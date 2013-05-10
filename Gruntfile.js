@@ -50,7 +50,20 @@ module.exports = function (grunt) {
 
     exec: {
       deploy: {
-        cmd: "git push heroku master"
+        cmd: function() {
+          var shell = require("shelljs");
+          var remoteRepoName = "heroku",
+            remoteRepoLoc = "git@heroku.com:gottto.git";
+
+          // Add remote repository if not already added
+          var out = shell.exec("git remote | grep '^" + remoteRepoName + "$'", {silent:true}).output;
+          if (out.length <= 0) {
+            console.log("Adding remote '" + remoteRepoName + "': " + remoteRepoLoc);
+            shell.exec("git remote add " + remoteRepoName + " " + remoteRepoLoc);
+          }
+
+          return "git push heroku master";
+        }
       }
     }
   });

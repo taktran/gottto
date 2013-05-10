@@ -16,10 +16,6 @@ To run the server
 
 This project is deployed to [heroku](http://www.heroku.com/), and can only be done by people who are collaborators.
 
-Firstly, add the remote heroku branch
-
-    git remote add heroku git@heroku.com:gottto.git
-
-Push to
+To deploy
 
     grunt deploy
