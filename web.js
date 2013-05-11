@@ -8,7 +8,8 @@ app.get('/', function(request, response) {
 
 app.get('/*', function(request, response) {
   var url = request.params[0];
-  response.send(url);
+  console.log(url);
+  response.redirect("/");
 });
 
 var port = process.env.PORT || 5000;
