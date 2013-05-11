@@ -54,7 +54,7 @@ module.exports = function (grunt) {
           var shell = require("shelljs"),
             packageJson = require('./package.json'),
             remoteRepoName = "heroku",
-            remoteRepoLoc = packageJson["deploymentRemote"];
+            remoteRepoLoc = packageJson.deploymentRemote;
 
           // Add remote repository if not already added
           var out = shell.exec("git remote | grep '^" + remoteRepoName + "$'", {silent:true}).output;
