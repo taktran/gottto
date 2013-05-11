@@ -12,5 +12,6 @@
 
   function renderUrl(url) {
     $("#url").html(url);
+    $("#url-container").attr("src", url);
   }
 })();
