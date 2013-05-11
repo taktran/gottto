@@ -66,6 +66,10 @@ body {
     height: 100%;
 }
 
+iframe {
+    border: none;
+}
+
 footer {
     position: fixed;
     bottom: 0;
