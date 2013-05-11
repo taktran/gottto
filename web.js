@@ -4,8 +4,12 @@ var Firebase = require('firebase'),
 var app = express();
 app.use(express.logger());
 
+// views
 app.set('views', __dirname + '/app/views');
 app.engine('html', require('ejs').renderFile);
+
+// serve static files
+app.use(express.static(__dirname + '/app/public'));
 
 app.get('/', function(req, res) {
   var dataRef = new Firebase(firebaseUrl);
