@@ -9,7 +9,7 @@ app.get('/', function(req, res) {
   res.render("index.html");
 });
 
-app.get('/*', function(req, res) {
+app.get('/url/*', function(req, res) {
   var url = req.params[0];
   console.log(url);
   res.redirect("/");
