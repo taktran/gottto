@@ -20,6 +20,7 @@ app.get('/', function(req, res) {
   });
 });
 
+// Should be a `post` as it modifies state, but need a simple `get` for now
 app.get('/url/*', function(req, res) {
   var url = req.params[0];
   console.log(url);
