@@ -2,14 +2,17 @@ var express = require("express");
 var app = express();
 app.use(express.logger());
 
-app.get('/', function(request, response) {
-  response.send('Hello World!');
+app.set('views', __dirname + '/app/views');
+app.engine('html', require('ejs').renderFile);
+
+app.get('/', function(req, res) {
+  res.render("index.html");
 });
 
-app.get('/*', function(request, response) {
-  var url = request.params[0];
+app.get('/*', function(req, res) {
+  var url = req.params[0];
   console.log(url);
-  response.redirect("/");
+  res.redirect("/");
 });
 
 var port = process.env.PORT || 5000;
