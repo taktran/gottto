@@ -18,6 +18,7 @@ app.get('/', function(req, res) {
     var url = data.val();
 
     res.render("index.html", {
+      firebaseUrl: firebaseUrl,
       url: url
     });
 
