@@ -23,13 +23,13 @@
       <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
     <![endif]-->
 
-    <header>
-      <div id="url"><%= url %></div>
-    </header>
-
     <div id="wrap">
-      <iframe id="url-container" src="<%= url %>" width="100%" height="100%"></iframe>
+      <iframe id="url-container" width="100%" height="100%"></iframe>
     </div>
+
+    <footer>
+      Gottto: <div id="url"><%= url %></div>
+    </footer>
 
     <script src='https://cdn.firebase.com/v0/firebase.js'></script>
     <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js'></script>
