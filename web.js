@@ -12,29 +12,31 @@ app.engine('html', require('ejs').renderFile);
 app.use(express.static(__dirname + '/app/public'));
 
 app.get('/', function(req, res) {
-  var dataRef = new Firebase(firebaseUrl);
+  var dataRef = new Firebase(firebaseUrl),
+    url = req.query.url;
 
-  dataRef.once('value', function(data) {
-    var url = data.val();
+  if (url) {
+    console.log(url);
 
-    res.render("index.html", {
-      firebaseUrl: firebaseUrl,
-      url: url
+    // TODO: url validation
+    var dataRef = new Firebase(firebaseUrl);
+    dataRef.set(url);
+
+    res.redirect("/");
+  } else {
+    dataRef.once('value', function(data) {
+      var url = data.val();
+
+      res.render("index.html", {
+        firebaseUrl: firebaseUrl,
+        url: url
+      });
     });
-
-  });
+  }
 });
 
 // Should be a `post` as it modifies state, but need a simple `get` for now
 app.get('/url/*', function(req, res) {
-  var url = req.params[0];
-  console.log(url);
-
-  // TODO: url validation
-  var dataRef = new Firebase(firebaseUrl);
-  dataRef.set(url);
-
-  res.redirect("/");
 });
 
 var port = process.env.PORT || 5000;
