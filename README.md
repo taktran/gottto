@@ -10,7 +10,7 @@ Install dependencies
 
 To run the server
 
-    grunt
+    nodemon web.js
 
 ## Deployment
 
