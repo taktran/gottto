@@ -17,26 +17,35 @@ function isValidUrl(str) {
 
 app.get('/', function(req, res) {
   var dataRef = new Firebase(firebaseUrl),
-    url = req.query.url;
+    url = req.query.url,
+    reset = req.query.reset;
 
-  if (url) {
-    if (isValidUrl(url)) {
-      console.log(url);
-
-      var dataRef = new Firebase(firebaseUrl);
-      dataRef.set(url);
-    }
+  if (reset) {
+    var url = "";
+    var dataRef = new Firebase(firebaseUrl);
+    dataRef.set(url);
 
     res.redirect("/");
   } else {
-    dataRef.once('value', function(data) {
-      var url = data.val();
+    if (url) {
+      if (isValidUrl(url)) {
+        console.log(url);
 
-      res.render("index.html", {
-        firebaseUrl: firebaseUrl,
-        url: url
+        var dataRef = new Firebase(firebaseUrl);
+        dataRef.set(url);
+      }
+
+      res.redirect("/");
+    } else {
+      dataRef.once('value', function(data) {
+        var url = data.val();
+
+        res.render("index.html", {
+          firebaseUrl: firebaseUrl,
+          url: url
+        });
       });
-    });
+    }
   }
 });
 
